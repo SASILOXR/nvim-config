@@ -15,6 +15,12 @@ return {
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
+		local eslint_d = lint.linters.eslint_d
+
+		eslint_d.args = {
+			"--no-warn-ignored",
+		}
+
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
 			callback = function()

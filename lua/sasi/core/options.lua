@@ -17,7 +17,7 @@ opt.wrap = false
 opt.ignorecase = true
 opt.smartcase = true
 
-opt.cursorline = true 
+opt.cursorline = true
 
 -- turn on terminal color for colorscheme to work
 opt.termguicolors = true
@@ -30,3 +30,5 @@ opt.clipboard:append("unnamedplus") -- allow vim clipboard ues system clipboard
 -- split windows
 opt.splitright = true
 opt.splitbelow = true
+-- cd current file
+vim.api.nvim_create_user_command("Cd", "cd %:h", {})
