@@ -32,3 +32,5 @@ opt.splitright = true
 opt.splitbelow = true
 -- cd current file
 vim.api.nvim_create_user_command("Cd", "cd %:h", {})
+-- set shell = pwsh
+vim.cmd("set shell=pwsh")
