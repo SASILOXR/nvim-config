@@ -87,7 +87,7 @@ return {
 			end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
+				lspconfig.lua_ls.setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -104,11 +104,12 @@ return {
 				})
 			end,
 			["clangd"] = function()
-				lspconfig["clangd"].setup({
-					clangd = {
-						arguments = {
-							"--enable-config",
-						},
+				lspconfig.clangd.setup({
+					capabilities = capabilities,
+					cmd = {
+						"clangd",
+						"--query-driver=C:/Users/Ewimo/app/llvm-mingw-20240820-ucrt-x86_64/bin/cc.exe",
+						"--log=verbose",
 					},
 				})
 			end,
@@ -118,10 +119,13 @@ return {
 						json = "jsonc",
 					},
 				})
-				lspconfig["jsonls"].setup({})
+				lspconfig["jsonls"].setup({
+					capabilities = capabilities,
+				})
 			end,
 			["yamlls"] = function()
 				lspconfig["yamlls"].setup({
+					capabilities = capabilities,
 					root_dir = function(filename, bufnc)
 						return nil
 					end,
