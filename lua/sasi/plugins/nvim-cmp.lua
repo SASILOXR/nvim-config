@@ -42,6 +42,7 @@ return {
 				["<C-h>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<SPACE>"] = cmp.mapping.confirm({ select = false }),
 				["<TAB>"] = cmp.mapping.select_next_item(), -- next suggestion
 			}),
 			-- sources for autocompletion
