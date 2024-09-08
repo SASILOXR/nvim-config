@@ -109,7 +109,7 @@ return {
 					cmd = {
 						"clangd",
 						"--query-driver=C:/Users/SASI/app/llvm-mingw-20240903-ucrt-x86_64/bin/cc.exe",
-						"--log=verbose",
+						-- "--log=verbose",
 					},
 				})
 			end,
