@@ -42,7 +42,8 @@ return {
 				["<C-h>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
-				["<SPACE>"] = cmp.mapping.confirm({ select = false }),
+				-- it get lot lag when type space
+				-- ["<SPACE>"] = cmp.mapping.confirm({select = false}),
 				["<TAB>"] = cmp.mapping.select_next_item(), -- next suggestion
 			}),
 			-- sources for autocompletion
@@ -52,6 +53,14 @@ return {
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
 			}),
+
+			-- only enable with cmp_cmdline
+			-- cmp.setup.cmdline({ "/", "?" }, {
+			-- 	mapping = cmp.mapping.preset.cmdline(),
+			-- 	sources = {
+			-- 		{ name = "buffer" },
+			-- 	},
+			-- }),
 
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
