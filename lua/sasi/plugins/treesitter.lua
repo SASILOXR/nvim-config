@@ -46,7 +46,11 @@ return {
 				"vimdoc",
 				"c",
 				"python",
+				"xml",
+				"c_sharp",
+				"java",
 			},
+
 			incremental_selection = {
 				enable = true,
 				keymaps = {
