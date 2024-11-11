@@ -33,8 +33,9 @@ opt.splitbelow = true
 -- cd current file
 vim.api.nvim_create_user_command("Cd", "cd %:h", {})
 -- set shell = pwsh
-vim.cmd("set shell=pwsh")
+-- vim.cmd("set shell=pwsh")
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellxquote = ""
 -- disable nvim lsp log
 vim.lsp.log.set_level(vim.log.levels.OFF)
+vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
