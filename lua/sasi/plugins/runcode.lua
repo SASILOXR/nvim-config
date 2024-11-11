@@ -3,14 +3,14 @@ return {
 	config = function()
 		require("code_runner").setup({
 			filetype = {
+				java = {
+					"cd $dir &&",
+					"javac $fileName &&",
+					"java $fileNameWithoutExt",
+				},
 				python = "python -u",
 			},
-			mode = "better_term",
-			better_term = {
-				clean = true,
-				number = 1,
-				init = nil,
-			},
+			mode = "term",
 		})
 	end,
 }

@@ -131,6 +131,11 @@ return {
 					end,
 				})
 			end,
+			["basedpyright"] = function() end,
 		})
+		-- other lsp config
+		-- lspconfig.basedpyright.setup({
+		-- 	capabilities = capabilities,
+		-- })
 	end,
 }
