@@ -88,6 +88,7 @@ return {
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig.lua_ls.setup({
+					-- cmd = { "lua-language-server", "--force-accept-worksapce" },
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -132,6 +133,14 @@ return {
 				})
 			end,
 			["basedpyright"] = function() end,
+			["java_language_server"] = function()
+				lspconfig["java_language_server"].setup({
+					capabilities = capabilities,
+					cmd = {
+						"java-language-server",
+					},
+				})
+			end,
 		})
 		-- other lsp config
 		-- lspconfig.basedpyright.setup({

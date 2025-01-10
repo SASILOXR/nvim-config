@@ -37,5 +37,5 @@ vim.api.nvim_create_user_command("Cd", "cd %:h", {})
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellxquote = ""
 -- disable nvim lsp log
-vim.lsp.log.set_level(vim.log.levels.OFF)
+-- vim.lsp.log.set_level(vim.log.levels.OFF)
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
