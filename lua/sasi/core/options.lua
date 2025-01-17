@@ -39,3 +39,5 @@ vim.opt.shellxquote = ""
 -- disable nvim lsp log
 -- vim.lsp.log.set_level(vim.log.levels.OFF)
 vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+-- fileencoding
+opt.fileencodings = "ucs-bom,utf-8,cp936,gb18030,default,latin1"
