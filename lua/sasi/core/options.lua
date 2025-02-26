@@ -18,6 +18,7 @@ opt.ignorecase = true
 opt.smartcase = true
 
 opt.cursorline = true
+-- opt.cursorcolumn = true
 
 -- turn on terminal color for colorscheme to work
 opt.termguicolors = true
