@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "folke/neodev.nvim", opts = {} },
+		{ "folke/lazydev.nvim", opts = {} },
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -72,76 +72,136 @@ return {
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig.lua_ls.setup({
-					-- cmd = { "lua-language-server", "--force-accept-worksapce" },
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							-- make the language server recognize "vim" global
-							diagnostics = {
-								globals = { "vim" },
-								disable = { "missing-fields" },
-							},
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				})
-			end,
-			["clangd"] = function()
-				lspconfig.clangd.setup({
-					capabilities = capabilities,
-					cmd = {
-						"clangd",
-						-- "--query-driver=C:/Users/SASI/app/llvm-mingw-20240903-ucrt-x86_64/bin/cc.exe",
-						-- "--log=verbose",
-					},
-				})
-			end,
-			["jsonls"] = function()
-				vim.filetype.add({
-					extension = {
-						json = "jsonc",
-					},
-				})
-				lspconfig["jsonls"].setup({
-					capabilities = capabilities,
-				})
-			end,
-			["yamlls"] = function()
-				lspconfig["yamlls"].setup({
-					capabilities = capabilities,
-					root_dir = function(filename, bufnc)
-						return nil
-					end,
-				})
-			end,
-			["basedpyright"] = function() end,
-			["java_language_server"] = function()
-				lspconfig["java_language_server"].setup({
-					capabilities = capabilities,
-					cmd = {
-						"java-language-server",
-					},
-				})
-			end,
+		-- local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+		-- for type, icon in pairs(signs) do
+		-- 	local hl = "DiagnosticSign" .. type
+		-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+		-- end
+		vim.diagnostic.config({
+			severity_sort = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+				linehl = {
+					[vim.diagnostic.severity.ERROR] = "DiagnosticError",
+					[vim.diagnostic.severity.WARN] = "DiagnosticWarn",
+					[vim.diagnostic.severity.HINT] = "DiagnosticHint",
+					[vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+				},
+			},
 		})
+
+		vim.lsp.config("*", {
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("lua_ls", {
+			-- cmd = { "lua-language-server", "--force-accept-worksapce" },
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					-- make the language server recognize "vim" global
+					diagnostics = {
+						globals = { "vim" },
+						disable = { "missing-fields" },
+					},
+					completion = {
+						callSnippet = "Replace",
+					},
+				},
+			},
+		})
+
+		vim.filetype.add({
+			extension = {
+				json = "jsonc",
+			},
+		})
+		-- vim.lsp.config("lua_ls", {
+		-- 	-- cmd = { "lua-language-server", "--force-accept-worksapce" },
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		Lua = {
+		-- 			-- make the language server recognize "vim" global
+		-- 			diagnostics = {
+		-- 				globals = { "vim" },
+		-- 				disable = { "missing-fields" },
+		-- 			},
+		-- 			completion = {
+		-- 				callSnippet = "Replace",
+		-- 			},
+		-- 		},
+		-- 	},
+		-- })
+
+		-- mason_lspconfig.setup_handlers({
+		-- 	-- default handler for installed servers
+		-- 	function(server_name)
+		-- 		lspconfig[server_name].setup({
+		-- 			capabilities = capabilities,
+		-- 		})
+		-- 	end,
+		-- 	["lua_ls"] = function()
+		-- 		-- configure lua server (with special settings)
+		-- 		lspconfig.lua_ls.setup({
+		-- 			-- cmd = { "lua-language-server", "--force-accept-worksapce" },
+		-- 			capabilities = capabilities,
+		-- 			settings = {
+		-- 				Lua = {
+		-- 					-- make the language server recognize "vim" global
+		-- 					diagnostics = {
+		-- 						globals = { "vim" },
+		-- 						disable = { "missing-fields" },
+		-- 					},
+		-- 					completion = {
+		-- 						callSnippet = "Replace",
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- 	["clangd"] = function()
+		-- 		lspconfig.clangd.setup({
+		-- 			capabilities = capabilities,
+		-- 			cmd = {
+		-- 				"clangd",
+		-- 				-- "--query-driver=C:/Users/SASI/app/llvm-mingw-20240903-ucrt-x86_64/bin/cc.exe",
+		-- 				-- "--log=verbose",
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- 	["jsonls"] = function()
+		-- 		vim.filetype.add({
+		-- 			extension = {
+		-- 				json = "jsonc",
+		-- 			},
+		-- 		})
+		-- 		lspconfig["jsonls"].setup({
+		-- 			capabilities = capabilities,
+		-- 		})
+		-- 	end,
+		-- 	["yamlls"] = function()
+		-- 		lspconfig["yamlls"].setup({
+		-- 			capabilities = capabilities,
+		-- 			root_dir = function(filename, bufnc)
+		-- 				return nil
+		-- 			end,
+		-- 		})
+		-- 	end,
+		-- 	["basedpyright"] = function() end,
+		-- 	["java_language_server"] = function()
+		-- 		lspconfig["java_language_server"].setup({
+		-- 			capabilities = capabilities,
+		-- 			cmd = {
+		-- 				"java-language-server",
+		-- 			},
+		-- 		})
+		-- 	end,
+		-- })
 		-- other lsp config
 		-- lspconfig.basedpyright.setup({
 		-- 	capabilities = capabilities,

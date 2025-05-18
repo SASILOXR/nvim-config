@@ -49,6 +49,7 @@ return {
 				"xml",
 				"c_sharp",
 				"java",
+				"rust",
 			},
 
 			incremental_selection = {
