@@ -1,8 +1,11 @@
 # nvim config
 
 it is my nvim config
+
 this is my linux nvim config branch
+
 it is a simple config to code
+
 it can't be a full ide
 
 ## require
