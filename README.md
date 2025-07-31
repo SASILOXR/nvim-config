@@ -2,4 +2,5 @@
 
 ## it is my nvim config
 
-### ahhhhhhhhhhhhhhhhhhhhh
+this is my windows nvim config
+i use powershell in windows
