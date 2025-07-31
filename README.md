@@ -3,4 +3,7 @@
 ## it is my nvim config
 
 this is my windows nvim config
-i use powershell in windows
+
+i use powershell on windows
+
+this config is very stupid and mess
