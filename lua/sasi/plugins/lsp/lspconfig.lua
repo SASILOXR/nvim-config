@@ -108,8 +108,9 @@ return {
 					capabilities = capabilities,
 					cmd = {
 						"clangd",
-						"--query-driver=C:/Users/Ewimo/app/llvm-mingw-20240820-ucrt-x86_64/bin/cc.exe",
-						"--log=verbose",
+						"--query-driver=C:/Users/SASI/app/llvm-mingw-20240903-ucrt-x86_64/bin/cc.exe",
+						-- "--query-driver=C:\\Users\\SASI\\app\\llvm-mingw-20240903-ucrt-x86_64\\bin\\c++.exe",
+						-- "--log=verbose",
 					},
 				})
 			end,
@@ -131,6 +132,11 @@ return {
 					end,
 				})
 			end,
+			["basedpyright"] = function() end,
 		})
+		-- other lsp config
+		-- lspconfig.basedpyright.setup({
+		-- 	capabilities = capabilities,
+		-- })
 	end,
 }
