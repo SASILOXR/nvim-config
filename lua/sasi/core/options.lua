@@ -32,9 +32,12 @@ opt.splitright = true
 opt.splitbelow = true
 -- cd current file
 vim.api.nvim_create_user_command("Cd", "cd %:h", {})
+-- vim.opt.shell = '"C:/Program Files/PowerShell/7/pwsh.exe"'
 -- set shell = pwsh
-vim.cmd("set shell=pwsh")
+-- vim.cmd("set shell=pwsh")
+vim.opt.shell = "pwsh"
 vim.opt.shellcmdflag = "-c"
 vim.opt.shellxquote = ""
+vim.opt.shellquote = ""
 -- disable nvim lsp log
-vim.lsp.log.set_level(vim.log.levels.OFF)
+-- vim.lsp.log.set_level(vim.log.levels.OFF)
