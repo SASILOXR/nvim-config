@@ -50,6 +50,7 @@ return {
 				"c_sharp",
 				"java",
 				"rust",
+				"cpp",
 			},
 
 			incremental_selection = {

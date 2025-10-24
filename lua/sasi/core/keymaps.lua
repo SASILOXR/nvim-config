@@ -5,7 +5,7 @@ local keymap = vim.keymap
 -- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "no highlight" })
-keymap.set("n", "<C-s>", ":w<CR>", { desc = "save file" })
+-- keymap.set("n", "<C-s>", ":w<CR>", { desc = "save file" })
 keymap.set("n", ";", "$", { desc = "same as $" })
 keymap.set("n", "d;", "d$", { desc = "same as d$" })
 

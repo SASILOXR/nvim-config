@@ -22,6 +22,7 @@ return {
 				python = { "isort", "black" },
 				c = { "clang-format" },
 				java = { "google-java-format" },
+				solidity = { "prettier" },
 			},
 			format_on_save = {
 				lsp_fallback = true,
